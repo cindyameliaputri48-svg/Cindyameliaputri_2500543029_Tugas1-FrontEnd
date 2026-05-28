@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My personal web</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body{
+      background: linear-gradient(135deg,#ffd6f6,#cce6ff);
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:30px;
+    }
+
+    .container{
+      width:100%;
+      max-width:800px;
+      background:white;
+      border-radius:30px;
+      padding:30px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.15);
+      text-align:center;
+      border:5px solid #ffb6e6;
+    }
+
+    h1{
+      color:#ff4fb3;
+      margin-bottom:10px;
+      font-size:40px;
+    }
+
+    h2{
+      color:#6aa9ff;
+      margin-bottom:20px;
+    }
+
+    .castle{
+      width:200px;
+      margin:20px auto;
+      display:block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%{transform:translateY(0);}
+      50%{transform:translateY(-10px);}
+      100%{transform:translateY(0);}
+    }
+
+    .card{
+      background:linear-gradient(135deg,#ffe0f4,#d9ecff);
+      padding:20px;
+      border-radius:20px;
+      margin-top:20px;
+      transition:0.3s;
+    }
+
+    button{
+      background:#ff66c4;
+      border:none;
+      padding:12px 20px;
+      margin:10px;
+      border-radius:15px;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+      font-weight:bold;
+    }
+
+    button:hover{
+      transform:scale(1.05);
+      background:#6aa9ff;
+    }
+
+    #bio{
+      margin-top:15px;
+      font-size:18px;
+      color:#444;
+      display:none;
+    }
+
+    input{
+      width:70%;
+      padding:12px;
+      border-radius:12px;
+      border:2px solid #ffb6e6;
+      margin-top:15px;
+      outline:none;
+    }
+
+    ul{
+      list-style:none;
+      margin-top:20px;
+    }
+
+    li{
+      background:#f7f7ff;
+      padding:10px;
+      border-radius:10px;
+      margin-top:10px;
+      color:#555;
+    }
+
+    .footer{
+      margin-top:25px;
+      color:#777;
+      font-size:14px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>✨ My Personal Web ✨</h1>
+    <h2>Pink & Blue Website</h2>
+
+    <div class="card" id="card">
+
+      <button id="showBioBtn">Tampilkan Biodata</button>
+
+      <p id="bio">
+        👑 Nama: Cindy Amelia Putri <br>
+        💎 Jurusan: Perbankan dan Keuangan <br>
+        🎀 Nim: 2500543029 <br>
+        🏰 Welcome to my personal web!
+      </p>
+
+      <button id="changeColorBtn">Ubah Warna Castle</button>
+
+      <br><br>
+
+      <input 
+        type="text" 
+        id="wishlistInput"
+        placeholder="Masukkan wishlist kamu..."
+      />
+
+      <button id="addBtn">Tambah Wishlist</button>
+
+      <ul id="wishlist"></ul>
+
+    </div>
+
+    <div class="footer">
+      Made with 💖 Pink & Blue Magic
+    </div>
+
+  </div>
+
+  <script>
+
+    const showBioBtn = document.getElementById("showBioBtn");
+    const bio = document.getElementById("bio");
+
+    showBioBtn.addEventListener("click", function(){
+      if(bio.style.display === "none"){
+        bio.style.display = "block";
+      } else {
+        bio.style.display = "none";
+      }
+    });
+
+    
+    const changeColorBtn = document.getElementById("changeColorBtn");
+    const card = document.getElementById("card");
+
+    changeColorBtn.addEventListener("click", function(){
+
+      const randomColor1 = "#" + Math.floor(Math.random()*16777215).toString(16);
+      const randomColor2 = "#" + Math.floor(Math.random()*16777215).toString(16);
+
+      card.style.background = `linear-gradient(135deg, ${randomColor1}, ${randomColor2})`;
+
+    });
+
+    const addBtn = document.getElementById("addBtn");
+    const wishlistInput = document.getElementById("wishlistInput");
+    const wishlist = document.getElementById("wishlist");
+
+    addBtn.addEventListener("click", function(){
+
+      const text = wishlistInput.value;
+
+      if(text === ""){
+        alert("Silahkan isi terlebih dahulu🎀");
+      } else {
+
+        const li = document.createElement("li");
+        li.textContent = "💖 " + text;
+
+        wishlist.appendChild(li);
+
+        wishlistInput.value = "";
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
+
+
