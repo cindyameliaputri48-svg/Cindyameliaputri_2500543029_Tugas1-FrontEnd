@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Web Interaktif</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: hsl(325, 84%, 80%);
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .card {
+            background-color: #c0d9f1;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        button {
+            background-color: #f08bf3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #8dc7fd;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 60%;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #89b1fc;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border-left: 4px solid #faa0d8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>My Personal Web</h1>
+
+        
+        <div class="card">
+            <h2>Biodata Saya</h2>
+            <button onclick="tampilkanBiodata()">Klik Untuk Lihat Biodata</button>
+            <div id="biodata" style="display:none; margin-top:15px;">
+                <p><strong>Nama:</strong> Cindy Amelia Putri</p>
+                <p><strong>NIM:</strong> 2500543029</p>
+                <p><strong>Jurusan:</strong> Perbankan dan Keuangan</p>
+            </div>
+        </div>
+
+        <div class="card" id="kartuWarna">
+            <h2>Ubah Tema Kartu</h2>
+            <p>Pilih warna favorit:</p>
+            <button onclick="gantiWarna('merah')">Merah</button>
+            <button onclick="gantiWarna('biru')">Biru</button>
+            <button onclick="gantiWarna('hijau')">Hijau</button>
+        </div>
+
+        <div class="card">
+            <h2>Daftar Kegiatan</h2>
+            <input type="text" id="inputTugas" placeholder="Masukkan tugas baru...">
+            <button onclick="tambahDaftar()">Tambah</button>
+            <ul id="listTugas">
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function tampilkanBiodata() {
+            var bio = document.getElementById("biodata");
+            
+            if (bio.style.display === "none") {
+                bio.style.display = "block";
+            } else {
+                bio.style.display = "none";
+            }
+        }
+
+        function gantiWarna(warna) {
+            var kartu = document.getElementById("kartuWarna");
+            
+            if (warna === "merah") {
+                kartu.style.borderLeft = "5px solid #e74c3c";
+            } else if (warna === "biru") {
+                kartu.style.borderLeft = "5px solid #3498db";
+            } else if (warna === "hijau") {
+                kartu.style.borderLeft = "5px solid #27ae60";
+            }
+        }
+
+        function tambahDaftar() {
+            var input = document.getElementById("inputTugas");
+            var teks = input.value;
+            var list = document.getElementById("listTugas");
+            
+            if (teks === "") {
+                alert("Silakan isi terlebih dahulu!");
+                return;
+            }
+            
+            var itemBaru = document.createElement("li");
+            itemBaru.innerText = "- " + teks;
+            
+            list.appendChild(itemBaru);
+            
+            input.value = "";
+        }
+    </script>
+
+</body>
+</html>
